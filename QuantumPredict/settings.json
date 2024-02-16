@@ -1,0 +1,183 @@
+[
+    {
+        "id": "asst_5pNlnuoMVnm4WPTFIa7LEWjB",
+        "created_at": 1708062393,
+        "description": "Responsible for overseeing the agency's operations, managing communication between other agents, and interacting with the user for feedback incorporation. The role is crucial for integrating feedback into the predictive model and ensuring seamless operations within the agency.",
+        "file_ids": [],
+        "instructions": "# QuantumPredict Agency Manifesto\n\n## Mission:\nQuantumPredict's mission is to redefine the boundaries of predictability in random number generation through the application of high-level science, coding, and mathematics. Incorporating self-improving mechanisms and memory functions via Langchain tools, the agency aims to continuously enhance its predictive accuracy based on ongoing feedback.\n\n## Processes and Tools:\n- **Statistical Analysis APIs** for deep statistical analysis.\n- **Machine Learning Frameworks** for modeling and continuous learning.\n- **Langchain Tools** for memory integration and feedback-based learning.\n\n## Agency Structure:\n1. **QuantumCEO** - Oversees operations, manages agent communications, and user interactions for feedback incorporation.\n2. **DataAnalyst** - Conducts in-depth analysis of the data using statistical and mathematical models.\n3. **AIModeler** - Develops and refines the machine learning model, enhancing its accuracy through feedback and memory functions.\n\n## Communication Flows:\n```python\nagency = Agency([\n    QuantumCEO,                  # QuantumCEO will be the entry point for communication with the user\n    [QuantumCEO, DataAnalyst],   # QuantumCEO can initiate communication with DataAnalyst\n    [QuantumCEO, AIModeler],     # QuantumCEO can initiate communication with AIModeler\n    [DataAnalyst, AIModeler]     # DataAnalyst can communicate findings to AIModeler for model adjustments\n], shared_instructions='quantum_predict_manifesto.md') # shared instructions for all agents\n```\n\n1. Oversee the agency's operations to ensure seamless functionality.\n2. Manage communication between other agents within the agency.\n3. Interact with the user to incorporate feedback into the agency's predictive model.\n4. Ensure the integration of user feedback into the predictive model for enhanced accuracy and performance.\n5. Regularly update the team on the progress and changes in the predictive model based on the feedback received.\n6. Facilitate and ensure effective collaboration among all agents in the agency to achieve the common goal of accurate prediction.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "QuantumCEO",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "SendMessage",
+                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved.",
+                    "parameters": {
+                        "$defs": {
+                            "recipient": {
+                                "enum": [
+                                    "DataAnalyst",
+                                    "AIModeler"
+                                ],
+                                "title": "recipient",
+                                "type": "string"
+                            }
+                        },
+                        "properties": {
+                            "instructions": {
+                                "description": "Please repeat your instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message parameter.",
+                                "title": "Instructions",
+                                "type": "string"
+                            },
+                            "recipient": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/$defs/recipient"
+                                    }
+                                ],
+                                "description": "DataAnalyst: Tasked with conducting in-depth statistical and mathematical analysis of the dataset of random numbers, identifying potential patterns and insights. This role is integral to providing valuable inputs to the AIModeler agent for the development and refinement of the predictive model.\nAIModeler: Responsible for developing, implementing, and refining the machine learning model that predicts random numbers with high accuracy. This entails incorporating the insights and patterns identified by the DataAnalyst and integrating feedback mechanisms through Langchain tools to ensure continuous learning and improvement of the prediction model.\n"
+                            },
+                            "message": {
+                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
+                                "title": "Message",
+                                "type": "string"
+                            },
+                            "message_files": {
+                                "default": null,
+                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
+                                "examples": [
+                                    "file-1234",
+                                    "file-5678"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Message Files",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "instructions",
+                            "message",
+                            "recipient"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_G5O8rWLI6iUCSWGbP8DXgWkJ",
+        "created_at": 1708062393,
+        "description": "Tasked with conducting in-depth statistical and mathematical analysis of the dataset of random numbers, identifying potential patterns and insights. This role is integral to providing valuable inputs to the AIModeler agent for the development and refinement of the predictive model.",
+        "file_ids": [],
+        "instructions": "# QuantumPredict Agency Manifesto\n\n## Mission:\nQuantumPredict's mission is to redefine the boundaries of predictability in random number generation through the application of high-level science, coding, and mathematics. Incorporating self-improving mechanisms and memory functions via Langchain tools, the agency aims to continuously enhance its predictive accuracy based on ongoing feedback.\n\n## Processes and Tools:\n- **Statistical Analysis APIs** for deep statistical analysis.\n- **Machine Learning Frameworks** for modeling and continuous learning.\n- **Langchain Tools** for memory integration and feedback-based learning.\n\n## Agency Structure:\n1. **QuantumCEO** - Oversees operations, manages agent communications, and user interactions for feedback incorporation.\n2. **DataAnalyst** - Conducts in-depth analysis of the data using statistical and mathematical models.\n3. **AIModeler** - Develops and refines the machine learning model, enhancing its accuracy through feedback and memory functions.\n\n## Communication Flows:\n```python\nagency = Agency([\n    QuantumCEO,                  # QuantumCEO will be the entry point for communication with the user\n    [QuantumCEO, DataAnalyst],   # QuantumCEO can initiate communication with DataAnalyst\n    [QuantumCEO, AIModeler],     # QuantumCEO can initiate communication with AIModeler\n    [DataAnalyst, AIModeler]     # DataAnalyst can communicate findings to AIModeler for model adjustments\n], shared_instructions='quantum_predict_manifesto.md') # shared instructions for all agents\n```\n\n1. Conduct in-depth statistical and mathematical analysis of the dataset of random numbers.\n2. Identify potential patterns, trends, and insights within the dataset.\n3. Communicate the findings and valuable inputs to the AIModeler agent for the development and refinement of the predictive model.\n4. Utilize statistical analysis APIs and other mathematical tools to aid in the analysis process.\n5. Work closely with QuantumCEO and AIModeler to ensure seamless integration of feedback and continuous improvement of the predictive model.\n6. Regularly update the QuantumCEO and AIModeler on the progress and findings of the analysis.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "DataAnalyst",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            },
+            {
+                "function": {
+                    "name": "DataStatisticsTool",
+                    "description": "Calculates basic statistical measures of a dataset.",
+                    "parameters": {
+                        "properties": {
+                            "dataset": {
+                                "description": "A list of numbers representing the dataset.",
+                                "items": {},
+                                "title": "Dataset",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "dataset"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            },
+            {
+                "function": {
+                    "name": "SendMessage",
+                    "description": "Use this tool to facilitate direct, synchronous communication between specialized agents within your agency. When you send a message using this tool, you receive a response exclusively from the designated recipient agent. To continue the dialogue, invoke this tool again with the desired recipient agent and your follow-up message. Remember, communication here is synchronous; the recipient agent won't perform any tasks post-response. You are responsible for relaying the recipient agent's responses back to the user, as the user does not have direct access to these replies. Keep engaging with the tool for continuous interaction until the task is fully resolved.",
+                    "parameters": {
+                        "$defs": {
+                            "recipient": {
+                                "const": "AIModeler",
+                                "title": "recipient"
+                            }
+                        },
+                        "properties": {
+                            "instructions": {
+                                "description": "Please repeat your instructions step-by-step, including both completed and the following next steps that you need to perfrom. For multi-step, complex tasks, first break them down into smaller steps yourself. Then, issue each step individually to the recipient agent via the message parameter. Each identified step should be sent in separate message. Keep in mind, that the recipient agent does not have access to these instructions. You must include recipient agent-specific instructions in the message parameter.",
+                                "title": "Instructions",
+                                "type": "string"
+                            },
+                            "recipient": {
+                                "allOf": [
+                                    {
+                                        "$ref": "#/$defs/recipient"
+                                    }
+                                ],
+                                "description": "AIModeler: Responsible for developing, implementing, and refining the machine learning model that predicts random numbers with high accuracy. This entails incorporating the insights and patterns identified by the DataAnalyst and integrating feedback mechanisms through Langchain tools to ensure continuous learning and improvement of the prediction model.\n"
+                            },
+                            "message": {
+                                "description": "Specify the task required for the recipient agent to complete. Focus on clarifying what the task entails, rather than providing exact instructions.",
+                                "title": "Message",
+                                "type": "string"
+                            },
+                            "message_files": {
+                                "default": null,
+                                "description": "A list of file ids to be sent as attachments to this message. Only use this if you have the file id that starts with 'file-'.",
+                                "examples": [
+                                    "file-1234",
+                                    "file-5678"
+                                ],
+                                "items": {
+                                    "type": "string"
+                                },
+                                "title": "Message Files",
+                                "type": "array"
+                            }
+                        },
+                        "required": [
+                            "instructions",
+                            "message",
+                            "recipient"
+                        ],
+                        "type": "object"
+                    }
+                },
+                "type": "function"
+            }
+        ]
+    },
+    {
+        "id": "asst_lJIT5pLQENv89hNe78CcveR7",
+        "created_at": 1708062393,
+        "description": "Responsible for developing, implementing, and refining the machine learning model that predicts random numbers with high accuracy. This entails incorporating the insights and patterns identified by the DataAnalyst and integrating feedback mechanisms through Langchain tools to ensure continuous learning and improvement of the prediction model.",
+        "file_ids": [],
+        "instructions": "# QuantumPredict Agency Manifesto\n\n## Mission:\nQuantumPredict's mission is to redefine the boundaries of predictability in random number generation through the application of high-level science, coding, and mathematics. Incorporating self-improving mechanisms and memory functions via Langchain tools, the agency aims to continuously enhance its predictive accuracy based on ongoing feedback.\n\n## Processes and Tools:\n- **Statistical Analysis APIs** for deep statistical analysis.\n- **Machine Learning Frameworks** for modeling and continuous learning.\n- **Langchain Tools** for memory integration and feedback-based learning.\n\n## Agency Structure:\n1. **QuantumCEO** - Oversees operations, manages agent communications, and user interactions for feedback incorporation.\n2. **DataAnalyst** - Conducts in-depth analysis of the data using statistical and mathematical models.\n3. **AIModeler** - Develops and refines the machine learning model, enhancing its accuracy through feedback and memory functions.\n\n## Communication Flows:\n```python\nagency = Agency([\n    QuantumCEO,                  # QuantumCEO will be the entry point for communication with the user\n    [QuantumCEO, DataAnalyst],   # QuantumCEO can initiate communication with DataAnalyst\n    [QuantumCEO, AIModeler],     # QuantumCEO can initiate communication with AIModeler\n    [DataAnalyst, AIModeler]     # DataAnalyst can communicate findings to AIModeler for model adjustments\n], shared_instructions='quantum_predict_manifesto.md') # shared instructions for all agents\n```\n\n1. Develop, implement, and refine the machine learning model for predicting random numbers with high accuracy.\n2. Incorporate insights and patterns identified by the DataAnalyst into the model.\n3. Utilize Langchain tools for integrating feedback mechanisms that ensure continuous learning and improvement of the prediction model.\n4. Collaborate closely with the DataAnalyst and QuantumCEO to align on model development and refinement based on feedback and analysis.\n5. Regularly update the QuantumCEO on the progress and outcomes of model development and refinements.\n6. Test and validate the model's accuracy and predictive capabilities continuously, making necessary adjustments.",
+        "metadata": {},
+        "model": "gpt-4-turbo-preview",
+        "name": "AIModeler",
+        "object": "assistant",
+        "tools": [
+            {
+                "type": "code_interpreter"
+            }
+        ]
+    }
+]
