@@ -1,0 +1,1 @@
+import openai\n\ndef call_openai_api(description):\n    # Ensure the description does not exceed 512 characters\n    truncated_description = description[:512]\n\n    response = openai.Completion.create(\n        engine=\"text-davinci-003\",\n        prompt=truncated_description,\n        max_tokens=50\n    )\n\n    return response\n
